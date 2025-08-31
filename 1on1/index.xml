@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="transform.xsl"?>
+<Module>
+  <ModulePrefs title="ovo"/>
+  <Content type="html">
+    <![CDATA[
+      <style>
+        html, body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background: black; /* optional, makes full screen look cleaner */
+        }
+        #container {
+          width: 100vw;
+          height: 100vh;
+        }
+        ruffle-player {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+      </style>
+
+      <div id="container">
+        <ruffle-player></ruffle-player>
+      </div>
+
+      <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+      <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.RufflePlayer.config = { autoplay:"off", scale:"showAll", allowFullscreen:true };
+        window.addEventListener("load", ()=>{
+          const ruffle = window.RufflePlayer.newest();
+          const player = ruffle.createPlayer();
+          document.getElementById("container").appendChild(player);
+          player.load("https://cdn.jsdelivr.net/gh/jackilyna/codemotion2015@d43bdbaa8a2aed944c7d78ffbc3f926278bf6f15/flg/one_on_one_basketball.swf");
+        });
+      </script>
+    ]]>
+  </Content>
+</Module>
